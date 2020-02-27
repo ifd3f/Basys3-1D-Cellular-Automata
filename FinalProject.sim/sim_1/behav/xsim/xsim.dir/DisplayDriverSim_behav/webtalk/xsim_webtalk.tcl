@@ -1,6 +1,6 @@
-webtalk_init -webtalk_dir /home/astrid/Documents/homework/2020-01_CPE133/FinalProject/FinalProject.sim/sim_1/behav/xsim/xsim.dir/SimSim_behav/webtalk/
+webtalk_init -webtalk_dir /home/astrid/Documents/homework/2020-01_CPE133/FinalProject/FinalProject.sim/sim_1/behav/xsim/xsim.dir/DisplayDriverSim_behav/webtalk/
 webtalk_register_client -client project
-webtalk_add_data -client project -key date_generated -value "Thu Feb 27 10:03:31 2020" -context "software_version_and_target_device"
+webtalk_add_data -client project -key date_generated -value "Tue Feb 25 15:15:12 2020" -context "software_version_and_target_device"
 webtalk_add_data -client project -key product_version -value "XSIM v2019.2 (64-bit)" -context "software_version_and_target_device"
 webtalk_add_data -client project -key build_version -value "2708876" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_platform -value "LIN64" -context "software_version_and_target_device"
@@ -14,19 +14,19 @@ webtalk_add_data -client project -key target_package -value "not_applicable" -co
 webtalk_add_data -client project -key target_speed -value "not_applicable" -context "software_version_and_target_device"
 webtalk_add_data -client project -key random_id -value "0a0db9df-7276-4a1c-aa4c-6e784229ce7b" -context "software_version_and_target_device"
 webtalk_add_data -client project -key project_id -value "79b4e17ab18c4853b1a906efec805a8c" -context "software_version_and_target_device"
-webtalk_add_data -client project -key project_iteration -value "40" -context "software_version_and_target_device"
+webtalk_add_data -client project -key project_iteration -value "6" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_name -value "Ubuntu" -context "user_environment"
 webtalk_add_data -client project -key os_release -value "Ubuntu 18.04.4 LTS" -context "user_environment"
 webtalk_add_data -client project -key cpu_name -value "Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz" -context "user_environment"
-webtalk_add_data -client project -key cpu_speed -value "1657.997 MHz" -context "user_environment"
+webtalk_add_data -client project -key cpu_speed -value "2391.038 MHz" -context "user_environment"
 webtalk_add_data -client project -key total_processors -value "1" -context "user_environment"
 webtalk_add_data -client project -key system_ram -value "16.000 GB" -context "user_environment"
 webtalk_register_client -client xsim
 webtalk_add_data -client xsim -key Command -value "xsim" -context "xsim\\command_line_options"
 webtalk_add_data -client xsim -key trace_waveform -value "true" -context "xsim\\usage"
-webtalk_add_data -client xsim -key runtime -value "1 us" -context "xsim\\usage"
-webtalk_add_data -client xsim -key iteration -value "1" -context "xsim\\usage"
-webtalk_add_data -client xsim -key Simulation_Time -value "0.01_sec" -context "xsim\\usage"
-webtalk_add_data -client xsim -key Simulation_Memory -value "125976_KB" -context "xsim\\usage"
-webtalk_transmit -clientid 4017139038 -regid "" -xml /home/astrid/Documents/homework/2020-01_CPE133/FinalProject/FinalProject.sim/sim_1/behav/xsim/xsim.dir/SimSim_behav/webtalk/usage_statistics_ext_xsim.xml -html /home/astrid/Documents/homework/2020-01_CPE133/FinalProject/FinalProject.sim/sim_1/behav/xsim/xsim.dir/SimSim_behav/webtalk/usage_statistics_ext_xsim.html -wdm /home/astrid/Documents/homework/2020-01_CPE133/FinalProject/FinalProject.sim/sim_1/behav/xsim/xsim.dir/SimSim_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
+webtalk_add_data -client xsim -key runtime -value "10 us" -context "xsim\\usage"
+webtalk_add_data -client xsim -key iteration -value "2" -context "xsim\\usage"
+webtalk_add_data -client xsim -key Simulation_Time -value "3.56_sec" -context "xsim\\usage"
+webtalk_add_data -client xsim -key Simulation_Memory -value "126732_KB" -context "xsim\\usage"
+webtalk_transmit -clientid 2199984514 -regid "" -xml /home/astrid/Documents/homework/2020-01_CPE133/FinalProject/FinalProject.sim/sim_1/behav/xsim/xsim.dir/DisplayDriverSim_behav/webtalk/usage_statistics_ext_xsim.xml -html /home/astrid/Documents/homework/2020-01_CPE133/FinalProject/FinalProject.sim/sim_1/behav/xsim/xsim.dir/DisplayDriverSim_behav/webtalk/usage_statistics_ext_xsim.html -wdm /home/astrid/Documents/homework/2020-01_CPE133/FinalProject/FinalProject.sim/sim_1/behav/xsim/xsim.dir/DisplayDriverSim_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
 webtalk_terminate

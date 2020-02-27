@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 02/20/2020 01:32:11 PM
+// Create Date: 02/25/2020 02:53:29 PM
 // Design Name: 
-// Module Name: SimSim
+// Module Name: DisplayDriverSim
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,34 +20,34 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module SimSim(
+module DisplayDriverSim(
 
     );
     
-    logic [15:0] si;
     logic [7:0] rule;
-    logic reset, clk;
-    logic [15:0] so;
-        
-    Simulator sim(.*);
+    logic clk, digit;
+    logic [7:0] seg;
+    logic [3:0] an;
+
+    
+    DisplayDriver drv(.*);
+    
+    always begin
+        clk = 1;
+        #1;
+        clk = 0;
+        #1;
+    end
     
     initial begin
-        clk = 0;
-        si = 16'b00010011000;
-        rule = 8'd110;
-        reset = 1;
-        #5;
-        clk = 1;
-        #5;
-        clk = 0;
-        reset = 0;
-        #5;
-        
-        while (1) begin
-            clk = 1;
-            #1;
-            clk = 0;
-            #5;
-        end
+        rule = 8'h05;
+        digit = 0;
+        #20;
+        digit = 1;
+        #20;
+        rule = 8'ha5;
+        digit = 0;
+        #20;
+        rule = 8'ha0;
     end
 endmodule

@@ -10,7 +10,10 @@ module Simulator#(parameter WIDTH=16)(
     
     Conv conv(.si({left, so, right}), .rule(rule), .so(convOut));
     
-    always_ff @(posedge clk) begin
-        so <= reset ? si : convOut;
+    always_ff @(posedge clk, posedge reset) begin
+        if (reset) 
+            so <= si;
+        else if (clk)
+            so <= convOut;
     end
 endmodule
