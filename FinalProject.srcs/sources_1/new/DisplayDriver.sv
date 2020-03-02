@@ -31,7 +31,7 @@ module DisplayDriver #(parameter DIV_DIG_WIDTH=16, DIV_DIG_N=2000)(
     logic clk_div;
     reg dp_sig = 0;
 
-    ClockDivider #(.CNT_WIDTH(DIV_DIG_WIDTH), .N(DIV_DIG_N)) div(.clkin(clk), .clkout(clk_div));
+    ClockDivider #(.WIDTH(DIV_DIG_WIDTH), .N(DIV_DIG_N)) div(.clkin(clk), .clkout(clk_div));
         
     always_ff @(posedge clk_div) begin
         dp_sig <= !dp_sig;
@@ -46,6 +46,6 @@ module DisplayDriver #(parameter DIV_DIG_WIDTH=16, DIV_DIG_N=2000)(
     
     Seg7 dcdr(.num(drv_n), .display(seg));
     assign dp = (drv_digit == digit) & (digit == dp_sig);
-    assign an = drv_digit ? 4'b01 : 4'b10; 
+    assign an = drv_digit ? 4'b1101 : 4'b1110; 
     
 endmodule
