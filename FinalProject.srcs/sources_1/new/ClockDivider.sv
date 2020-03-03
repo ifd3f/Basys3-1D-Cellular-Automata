@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module ClockDivider#(parameter WIDTH=8, N=20)(
+module ClockDivider#(parameter WIDTH, N)(
     input clkin,
     output clkout
     );

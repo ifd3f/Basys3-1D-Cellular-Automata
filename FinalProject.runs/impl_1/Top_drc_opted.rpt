@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
-| Date         : Mon Mar  2 00:14:00 2020
+| Date         : Tue Mar  3 09:34:12 2020
 | Host         : BANANA running 64-bit Ubuntu 18.04.4 LTS
 | Command      : report_drc -file Top_drc_opted.rpt -pb Top_drc_opted.pb -rpx Top_drc_opted.rpx
 | Design       : Top
@@ -24,12 +24,11 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 4
+             Violations found: 2
 +-------------+----------+-------------------------------------------------------------+------------+
 | Rule        | Severity | Description                                                 | Violations |
 +-------------+----------+-------------------------------------------------------------+------------+
 | CFGBVS-1    | Warning  | Missing CFGBVS and CONFIG_VOLTAGE Design Properties         | 1          |
-| PLCK-12     | Warning  | Clock Placer Checks                                         | 2          |
 | PLHOLDVIO-2 | Warning  | Non-Optimal connections which could lead to hold violations | 1          |
 +-------------+----------+-------------------------------------------------------------+------------+
 
@@ -46,28 +45,6 @@ Neither the CFGBVS nor CONFIG_VOLTAGE voltage property is set in the current_des
  #where value2 is the voltage provided to configuration bank 0
 
 Refer to the device configuration user guide for more information.
-Related violations: <none>
-
-PLCK-12#1 Warning
-Clock Placer Checks  
-Poor placement for routing between an IO pin and BUFG. 
-Resolution: Poor placement of an IO pin and a BUFG has resulted in the router using a non-dedicated path between the two.  There are several things that could trigger this DRC, each of which can cause unpredictable clock insertion delays that result in poor timing.  This DRC could be caused by any of the following: (a) a clock port was placed on a pin that is not a CCIO-pin (b)the BUFG has not been placed in the same half of the device or SLR as the CCIO-pin (c) a single ended clock has been placed on the N-Side of a differential pair CCIO-pin.
- This is normally an ERROR but the CLOCK_DEDICATED_ROUTE constraint is set to FALSE allowing your design to continue. The use of this override is highly discouraged as it may lead to very poor timing results. It is recommended that this error condition be corrected in the design.
-
-	dec_IBUF_inst (IBUF.O) is locked to U17
-	dec_IBUF_BUFG_inst (BUFG.I) cannot be placed
-
-Related violations: <none>
-
-PLCK-12#2 Warning
-Clock Placer Checks  
-Poor placement for routing between an IO pin and BUFG. 
-Resolution: Poor placement of an IO pin and a BUFG has resulted in the router using a non-dedicated path between the two.  There are several things that could trigger this DRC, each of which can cause unpredictable clock insertion delays that result in poor timing.  This DRC could be caused by any of the following: (a) a clock port was placed on a pin that is not a CCIO-pin (b)the BUFG has not been placed in the same half of the device or SLR as the CCIO-pin (c) a single ended clock has been placed on the N-Side of a differential pair CCIO-pin.
- This is normally an ERROR but the CLOCK_DEDICATED_ROUTE constraint is set to FALSE allowing your design to continue. The use of this override is highly discouraged as it may lead to very poor timing results. It is recommended that this error condition be corrected in the design.
-
-	dig_prev_IBUF_inst (IBUF.O) is locked to T17
-	dig_prev_IBUF_BUFG_inst (BUFG.I) cannot be placed
-
 Related violations: <none>
 
 PLHOLDVIO-2#1 Warning

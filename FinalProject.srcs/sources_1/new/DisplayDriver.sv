@@ -39,13 +39,13 @@ module DisplayDriver #(parameter DIV_DIG_WIDTH=16, DIV_DIG_N=2000)(
     
     reg drv_digit = 0;
     always_ff @(posedge clk) begin
-        drv_digit = !drv_digit;
+        drv_digit <= !drv_digit;
     end
     
     logic [3:0] drv_n = drv_digit ? rule[3:0] : rule[7:4];
     
     Seg7 dcdr(.num(drv_n), .display(seg));
-    assign dp = (drv_digit == digit) & (digit == dp_sig);
+    assign dp = ~((drv_digit == digit) & (digit == dp_sig));
     assign an = drv_digit ? 4'b1101 : 4'b1110; 
     
 endmodule

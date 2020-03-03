@@ -1,6 +1,6 @@
 module SelectRule(
-    input clk, inc, dec, dig_next, dig_prev,
-    output reg [7:0] rule = 0,
+    input clk, inc, dec, dig_next, dig_prev, enter,
+    output reg [7:0] active_rule = 0, rule = 0,
     output reg digit = 0
     );
     
@@ -8,18 +8,15 @@ module SelectRule(
     
     assign delta = digit ? 8'd16 : 8'd1;
     
-    always_ff @(posedge inc, posedge dec) begin
+    always_ff @(posedge clk) begin
         if (inc)
             rule <= rule + delta;
         if (dec)
             rule <= rule - delta;
-    end
-    
-    always_ff @(posedge dig_next, posedge dig_prev) begin
-        if (dig_next)
-            digit <= !digit;
-        if (dig_prev)
-            digit <= !digit;
+        if (dig_next | dig_prev)
+            digit <= ~digit;
+        if (enter)
+            active_rule <= rule;
     end
     
 endmodule
