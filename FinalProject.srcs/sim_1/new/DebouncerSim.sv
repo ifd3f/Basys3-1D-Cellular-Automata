@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 02/25/2020 02:53:29 PM
+// Create Date: 03/03/2020 09:14:19 AM
 // Design Name: 
-// Module Name: DisplayDriverSim
+// Module Name: DebouncerSim
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,17 +20,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module DisplayDriverSim(
+module DebouncerSim(
 
     );
     
-    logic [7:0] rule;
-    logic clk, digit, dp;
-    logic [6:0] seg;
-    logic [3:0] an;
-
+    logic clk, d, q;
     
-    DisplayDriver #(.DIV_DIG_N(4)) drv(.*);
+    Debouncer #(.N(8'd8)) db(.*);
     
     always begin
         clk = 1;
@@ -40,14 +36,29 @@ module DisplayDriverSim(
     end
     
     initial begin
-        rule = 8'h05;
-        digit = 0;
+        d = 0;
+        #10;
+        d = 1;
+        #10;
+        d = 0;
         #20;
-        digit = 1;
+        
+        d = 1;
+        #1;
+        d = 0;
+        #1;
+        d = 1;
+        #3;
+        d = 0;
+        #3
+        d = 1;
+        #1;
+        d = 0;
         #20;
-        rule = 8'ha5;
-        digit = 0;
+        
+        d = 1;
         #20;
-        rule = 8'ha0;
-    end
+        d = 0;
+        #100;
+    end   
 endmodule
