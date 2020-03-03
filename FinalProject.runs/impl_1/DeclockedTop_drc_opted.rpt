@@ -1,14 +1,14 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
-------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
-| Date         : Tue Mar  3 09:34:12 2020
+| Date         : Tue Mar  3 09:54:44 2020
 | Host         : BANANA running 64-bit Ubuntu 18.04.4 LTS
-| Command      : report_drc -file Top_drc_opted.rpt -pb Top_drc_opted.pb -rpx Top_drc_opted.rpx
-| Design       : Top
+| Command      : report_drc -file DeclockedTop_drc_opted.rpt -pb DeclockedTop_drc_opted.pb -rpx DeclockedTop_drc_opted.rpx
+| Design       : DeclockedTop
 | Device       : xc7a35tcpg236-1
 | Speed File   : -1
 | Design State : Synthesized
-------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
 
 Report DRC
 
@@ -49,8 +49,8 @@ Related violations: <none>
 
 PLHOLDVIO-2#1 Warning
 Non-Optimal connections which could lead to hold violations  
-A LUT drv/div/dp_sig_i_2 is driving clock pin of 1 cells. This could lead to large hold time violations. Involved cells are:
-drv/dp_sig_reg
+A LUT top/drv/div/dp_sig_i_2 is driving clock pin of 1 cells. This could lead to large hold time violations. Involved cells are:
+top/drv/dp_sig_reg
 Related violations: <none>
 
 

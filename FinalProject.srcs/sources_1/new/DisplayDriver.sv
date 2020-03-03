@@ -19,7 +19,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module DisplayDriver #(parameter DIV_DIG_WIDTH=16, DIV_DIG_N=2000)(
+module DisplayDriver #(parameter DIV_DIG_WIDTH=8, DIV_DIG_N=250)(
     input [7:0] rule,
     input clk,
     input digit,
@@ -42,10 +42,11 @@ module DisplayDriver #(parameter DIV_DIG_WIDTH=16, DIV_DIG_N=2000)(
         drv_digit <= !drv_digit;
     end
     
-    logic [3:0] drv_n = drv_digit ? rule[3:0] : rule[7:4];
+    logic [3:0] drv_n;
+    assign drv_n = drv_digit ? rule[7:4] : rule[3:0];
     
     Seg7 dcdr(.num(drv_n), .display(seg));
-    assign dp = ~((drv_digit == digit) & (digit == dp_sig));
+    assign dp = ~((drv_digit == digit) & dp_sig);
     assign an = drv_digit ? 4'b1101 : 4'b1110; 
     
 endmodule

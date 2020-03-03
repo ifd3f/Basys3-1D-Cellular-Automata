@@ -1,39 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1583256761">
-  <File Type="PA-TCL" Name="Top.tcl"/>
-  <File Type="REPORTS-TCL" Name="Top_reports.tcl"/>
-  <File Type="OPT-DCP" Name="Top_opt.dcp"/>
-  <File Type="OPT-HWDEF" Name="Top.hwdef"/>
-  <File Type="PWROPT-DCP" Name="Top_pwropt.dcp"/>
-  <File Type="PLACE-DCP" Name="Top_placed.dcp"/>
-  <File Type="PLACE-PRE-SIMILARITY" Name="Top_incremental_reuse_pre_placed.rpt"/>
-  <File Type="POSTPLACE-PWROPT-DCP" Name="Top_postplace_pwropt.dcp"/>
-  <File Type="PHYSOPT-DCP" Name="Top_physopt.dcp"/>
-  <File Type="ROUTE-ERROR-DCP" Name="Top_routed_error.dcp"/>
-  <File Type="ROUTE-DCP" Name="Top_routed.dcp"/>
-  <File Type="ROUTE-BLACKBOX-DCP" Name="Top_routed_bb.dcp"/>
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1583257995">
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
-  <File Type="BG-BIT" Name="Top.bit"/>
-  <File Type="BITSTR-MSK" Name="Top.msk"/>
-  <File Type="BITSTR-RBT" Name="Top.rbt"/>
-  <File Type="BITSTR-NKY" Name="Top.nky"/>
-  <File Type="BITSTR-BMM" Name="Top_bd.bmm"/>
-  <File Type="PDI-FILE" Name="Top.pdi"/>
-  <File Type="BITSTR-MMI" Name="Top.mmi"/>
-  <File Type="POSTROUTE-PHYSOPT-DCP" Name="Top_postroute_physopt.dcp"/>
-  <File Type="BG-BGN" Name="Top.bgn"/>
-  <File Type="BG-BIN" Name="Top.bin"/>
-  <File Type="RCFI_FILE" Name="Top.rcfi"/>
-  <File Type="RDI-RDI" Name="Top.vdi"/>
-  <File Type="BG-DRC" Name="Top.drc"/>
-  <File Type="CFI_FILE" Name="Top.cfi"/>
-  <File Type="BITSTR-SYSDEF" Name="Top.sysdef"/>
-  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="Top_postroute_physopt_bb.dcp"/>
-  <File Type="NPI_FILE" Name="Top.npi"/>
-  <File Type="RNPI_FILE" Name="Top.rnpi"/>
-  <File Type="BITSTR-LTX" Name="Top.ltx"/>
-  <File Type="RBD_FILE" Name="Top.rbd"/>
-  <File Type="ROUTE-TIMING-PB" Name="Top_timing_summary_routed.pb"/>
+  <File Type="BG-DRC" Name="DeclockedTop.drc"/>
+  <File Type="BG-BGN" Name="DeclockedTop.bgn"/>
+  <File Type="BITSTR-SYSDEF" Name="DeclockedTop.sysdef"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="DeclockedTop.ltx"/>
+  <File Type="RBD_FILE" Name="DeclockedTop.rbd"/>
+  <File Type="NPI_FILE" Name="DeclockedTop.npi"/>
+  <File Type="RNPI_FILE" Name="DeclockedTop.rnpi"/>
+  <File Type="CFI_FILE" Name="DeclockedTop.cfi"/>
+  <File Type="RDI-RDI" Name="DeclockedTop.vdi"/>
+  <File Type="RCFI_FILE" Name="DeclockedTop.rcfi"/>
+  <File Type="PDI-FILE" Name="DeclockedTop.pdi"/>
+  <File Type="BITSTR-MMI" Name="DeclockedTop.mmi"/>
+  <File Type="BITSTR-BMM" Name="DeclockedTop_bd.bmm"/>
+  <File Type="BITSTR-NKY" Name="DeclockedTop.nky"/>
+  <File Type="BITSTR-RBT" Name="DeclockedTop.rbt"/>
+  <File Type="BITSTR-MSK" Name="DeclockedTop.msk"/>
+  <File Type="BG-BIN" Name="DeclockedTop.bin"/>
+  <File Type="BG-BIT" Name="DeclockedTop.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="DeclockedTop_bus_skew_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="DeclockedTop_bus_skew_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="DeclockedTop_bus_skew_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="DeclockedTop_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="DeclockedTop_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="DeclockedTop_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="DeclockedTop_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="DeclockedTop_postroute_physopt.dcp"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="DeclockedTop_bus_skew_routed.rpx"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="DeclockedTop_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW" Name="DeclockedTop_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="DeclockedTop_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-SIMILARITY" Name="DeclockedTop_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-TIMING-RPX" Name="DeclockedTop_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-TIMING-PB" Name="DeclockedTop_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="DeclockedTop_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="DeclockedTop_route_status.pb"/>
+  <File Type="ROUTE-STATUS" Name="DeclockedTop_route_status.rpt"/>
+  <File Type="ROUTE-PWR-RPX" Name="DeclockedTop_power_routed.rpx"/>
+  <File Type="ROUTE-PWR-SUM" Name="DeclockedTop_power_summary_routed.pb"/>
+  <File Type="ROUTE-PWR" Name="DeclockedTop_power_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="DeclockedTop_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="DeclockedTop_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="DeclockedTop_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-RPX" Name="DeclockedTop_drc_routed.rpx"/>
+  <File Type="ROUTE-DRC-PB" Name="DeclockedTop_drc_routed.pb"/>
+  <File Type="ROUTE-DRC" Name="DeclockedTop_drc_routed.rpt"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="DeclockedTop_routed_bb.dcp"/>
+  <File Type="ROUTE-DCP" Name="DeclockedTop_routed.dcp"/>
+  <File Type="ROUTE-ERROR-DCP" Name="DeclockedTop_routed_error.dcp"/>
+  <File Type="PHYSOPT-TIMING" Name="DeclockedTop_timing_summary_physopted.rpt"/>
+  <File Type="PHYSOPT-DRC" Name="DeclockedTop_drc_physopted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="DeclockedTop_physopt.dcp"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="DeclockedTop_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="DeclockedTop_postplace_pwropt.dcp"/>
+  <File Type="PLACE-TIMING" Name="DeclockedTop_timing_summary_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="DeclockedTop_incremental_reuse_pre_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="DeclockedTop_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-CTRL" Name="DeclockedTop_control_sets_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="DeclockedTop_utilization_placed.pb"/>
+  <File Type="PLACE-UTIL" Name="DeclockedTop_utilization_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="DeclockedTop_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-IO" Name="DeclockedTop_io_placed.rpt"/>
+  <File Type="PLACE-DCP" Name="DeclockedTop_placed.dcp"/>
+  <File Type="PWROPT-DRC" Name="DeclockedTop_drc_pwropted.rpt"/>
+  <File Type="PWROPT-DCP" Name="DeclockedTop_pwropt.dcp"/>
+  <File Type="OPT-HWDEF" Name="DeclockedTop.hwdef"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="DeclockedTop_methodology_drc_opted.rpt"/>
+  <File Type="OPT-DRC" Name="DeclockedTop_drc_opted.rpt"/>
+  <File Type="OPT-DCP" Name="DeclockedTop_opt.dcp"/>
+  <File Type="INIT-TIMING" Name="DeclockedTop_timing_summary_init.rpt"/>
+  <File Type="PWROPT-TIMING" Name="DeclockedTop_timing_summary_pwropted.rpt"/>
+  <File Type="REPORTS-TCL" Name="DeclockedTop_reports.tcl"/>
+  <File Type="OPT-TIMING" Name="DeclockedTop_timing_summary_opted.rpt"/>
+  <File Type="PA-TCL" Name="DeclockedTop.tcl"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/ClockDivider.sv">
@@ -99,6 +140,13 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sim_1/new/DeclockedTop.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/new/NumControl.sv">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
@@ -133,7 +181,7 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="Top"/>
+      <Option Name="TopModule" Val="DeclockedTop"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
@@ -165,6 +213,5 @@
     <Step Id="route_design"/>
     <Step Id="post_route_phys_opt_design"/>
     <Step Id="write_bitstream"/>
-    <Step Id="write_device_image"/>
   </Strategy>
 </GenRun>

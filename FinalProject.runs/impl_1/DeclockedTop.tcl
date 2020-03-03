@@ -60,13 +60,11 @@ proc step_failed { step } {
   close $ch
 }
 
-set_msg_config -id {Common 17-41} -limit 10000000
 
 start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param xicom.use_bs_reader 1
   set_param chipscope.maxJobs 2
   create_project -in_memory -part xc7a35tcpg236-1
   set_property board_part_repo_paths {/home/astrid/.Xilinx/Vivado/2019.2/xhub/board_store} [current_project]
@@ -77,9 +75,9 @@ set rc [catch {
   set_property parent.project_path /home/astrid/Documents/homework/2020-01_CPE133/FinalProject/FinalProject.xpr [current_project]
   set_property ip_output_repo /home/astrid/Documents/homework/2020-01_CPE133/FinalProject/FinalProject.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
-  add_files -quiet /home/astrid/Documents/homework/2020-01_CPE133/FinalProject/FinalProject.runs/synth_1/Top.dcp
+  add_files -quiet /home/astrid/Documents/homework/2020-01_CPE133/FinalProject/FinalProject.runs/synth_1/DeclockedTop.dcp
   read_xdc /home/astrid/Documents/homework/2020-01_CPE133/FinalProject/FinalProject.srcs/constrs_1/new/Constraints.xdc
-  link_design -top Top -part xc7a35tcpg236-1
+  link_design -top DeclockedTop -part xc7a35tcpg236-1
   close_msg_db -file init_design.pb
 } RESULT]
 if {$rc} {
@@ -95,8 +93,8 @@ set ACTIVE_STEP opt_design
 set rc [catch {
   create_msg_db opt_design.pb
   opt_design 
-  write_checkpoint -force Top_opt.dcp
-  create_report "impl_1_opt_report_drc_0" "report_drc -file Top_drc_opted.rpt -pb Top_drc_opted.pb -rpx Top_drc_opted.rpx"
+  write_checkpoint -force DeclockedTop_opt.dcp
+  create_report "impl_1_opt_report_drc_0" "report_drc -file DeclockedTop_drc_opted.rpt -pb DeclockedTop_drc_opted.pb -rpx DeclockedTop_drc_opted.rpx"
   close_msg_db -file opt_design.pb
 } RESULT]
 if {$rc} {
@@ -115,10 +113,10 @@ set rc [catch {
     implement_debug_core 
   } 
   place_design 
-  write_checkpoint -force Top_placed.dcp
-  create_report "impl_1_place_report_io_0" "report_io -file Top_io_placed.rpt"
-  create_report "impl_1_place_report_utilization_0" "report_utilization -file Top_utilization_placed.rpt -pb Top_utilization_placed.pb"
-  create_report "impl_1_place_report_control_sets_0" "report_control_sets -verbose -file Top_control_sets_placed.rpt"
+  write_checkpoint -force DeclockedTop_placed.dcp
+  create_report "impl_1_place_report_io_0" "report_io -file DeclockedTop_io_placed.rpt"
+  create_report "impl_1_place_report_utilization_0" "report_utilization -file DeclockedTop_utilization_placed.rpt -pb DeclockedTop_utilization_placed.pb"
+  create_report "impl_1_place_report_control_sets_0" "report_control_sets -verbose -file DeclockedTop_control_sets_placed.rpt"
   close_msg_db -file place_design.pb
 } RESULT]
 if {$rc} {
@@ -134,7 +132,7 @@ set ACTIVE_STEP phys_opt_design
 set rc [catch {
   create_msg_db phys_opt_design.pb
   phys_opt_design 
-  write_checkpoint -force Top_physopt.dcp
+  write_checkpoint -force DeclockedTop_physopt.dcp
   close_msg_db -file phys_opt_design.pb
 } RESULT]
 if {$rc} {
@@ -150,19 +148,19 @@ set ACTIVE_STEP route_design
 set rc [catch {
   create_msg_db route_design.pb
   route_design 
-  write_checkpoint -force Top_routed.dcp
-  create_report "impl_1_route_report_drc_0" "report_drc -file Top_drc_routed.rpt -pb Top_drc_routed.pb -rpx Top_drc_routed.rpx"
-  create_report "impl_1_route_report_methodology_0" "report_methodology -file Top_methodology_drc_routed.rpt -pb Top_methodology_drc_routed.pb -rpx Top_methodology_drc_routed.rpx"
-  create_report "impl_1_route_report_power_0" "report_power -file Top_power_routed.rpt -pb Top_power_summary_routed.pb -rpx Top_power_routed.rpx"
-  create_report "impl_1_route_report_route_status_0" "report_route_status -file Top_route_status.rpt -pb Top_route_status.pb"
-  create_report "impl_1_route_report_timing_summary_0" "report_timing_summary -max_paths 10 -file Top_timing_summary_routed.rpt -pb Top_timing_summary_routed.pb -rpx Top_timing_summary_routed.rpx -warn_on_violation "
-  create_report "impl_1_route_report_incremental_reuse_0" "report_incremental_reuse -file Top_incremental_reuse_routed.rpt"
-  create_report "impl_1_route_report_clock_utilization_0" "report_clock_utilization -file Top_clock_utilization_routed.rpt"
-  create_report "impl_1_route_report_bus_skew_0" "report_bus_skew -warn_on_violation -file Top_bus_skew_routed.rpt -pb Top_bus_skew_routed.pb -rpx Top_bus_skew_routed.rpx"
+  write_checkpoint -force DeclockedTop_routed.dcp
+  create_report "impl_1_route_report_drc_0" "report_drc -file DeclockedTop_drc_routed.rpt -pb DeclockedTop_drc_routed.pb -rpx DeclockedTop_drc_routed.rpx"
+  create_report "impl_1_route_report_methodology_0" "report_methodology -file DeclockedTop_methodology_drc_routed.rpt -pb DeclockedTop_methodology_drc_routed.pb -rpx DeclockedTop_methodology_drc_routed.rpx"
+  create_report "impl_1_route_report_power_0" "report_power -file DeclockedTop_power_routed.rpt -pb DeclockedTop_power_summary_routed.pb -rpx DeclockedTop_power_routed.rpx"
+  create_report "impl_1_route_report_route_status_0" "report_route_status -file DeclockedTop_route_status.rpt -pb DeclockedTop_route_status.pb"
+  create_report "impl_1_route_report_timing_summary_0" "report_timing_summary -max_paths 10 -file DeclockedTop_timing_summary_routed.rpt -pb DeclockedTop_timing_summary_routed.pb -rpx DeclockedTop_timing_summary_routed.rpx -warn_on_violation "
+  create_report "impl_1_route_report_incremental_reuse_0" "report_incremental_reuse -file DeclockedTop_incremental_reuse_routed.rpt"
+  create_report "impl_1_route_report_clock_utilization_0" "report_clock_utilization -file DeclockedTop_clock_utilization_routed.rpt"
+  create_report "impl_1_route_report_bus_skew_0" "report_bus_skew -warn_on_violation -file DeclockedTop_bus_skew_routed.rpt -pb DeclockedTop_bus_skew_routed.pb -rpx DeclockedTop_bus_skew_routed.rpx"
   close_msg_db -file route_design.pb
 } RESULT]
 if {$rc} {
-  write_checkpoint -force Top_routed_error.dcp
+  write_checkpoint -force DeclockedTop_routed_error.dcp
   step_failed route_design
   return -code error $RESULT
 } else {
@@ -174,10 +172,10 @@ start_step write_bitstream
 set ACTIVE_STEP write_bitstream
 set rc [catch {
   create_msg_db write_bitstream.pb
-  catch { write_mem_info -force Top.mmi }
-  write_bitstream -force Top.bit 
-  catch {write_debug_probes -quiet -force Top}
-  catch {file copy -force Top.ltx debug_nets.ltx}
+  catch { write_mem_info -force DeclockedTop.mmi }
+  write_bitstream -force DeclockedTop.bit 
+  catch {write_debug_probes -quiet -force DeclockedTop}
+  catch {file copy -force DeclockedTop.ltx debug_nets.ltx}
   close_msg_db -file write_bitstream.pb
 } RESULT]
 if {$rc} {

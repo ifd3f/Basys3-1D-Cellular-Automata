@@ -17,9 +17,7 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_param xicom.use_bs_reader 1
 set_param chipscope.maxJobs 2
-set_msg_config -id {Common 17-41} -limit 10000000
 create_project -in_memory -part xc7a35tcpg236-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -43,6 +41,7 @@ read_verilog -library xil_defaultlib -sv {
   /home/astrid/Documents/homework/2020-01_CPE133/FinalProject/FinalProject.srcs/sources_1/new/Simulator.sv
   /home/astrid/Documents/homework/2020-01_CPE133/FinalProject/FinalProject.srcs/sources_1/new/Step.sv
   /home/astrid/Documents/homework/2020-01_CPE133/FinalProject/FinalProject.srcs/sources_1/new/Top.sv
+  /home/astrid/Documents/homework/2020-01_CPE133/FinalProject/FinalProject.srcs/sim_1/new/DeclockedTop.sv
 }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -58,12 +57,12 @@ set_property used_in_implementation false [get_files /home/astrid/Documents/home
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 
-synth_design -top Top -part xc7a35tcpg236-1
+synth_design -top DeclockedTop -part xc7a35tcpg236-1
 
 
 # disable binary constraint mode for synth run checkpoints
 set_param constraints.enableBinaryConstraints false
-write_checkpoint -force -noxdef Top.dcp
-create_report "synth_1_synth_report_utilization_0" "report_utilization -file Top_utilization_synth.rpt -pb Top_utilization_synth.pb"
+write_checkpoint -force -noxdef DeclockedTop.dcp
+create_report "synth_1_synth_report_utilization_0" "report_utilization -file DeclockedTop_utilization_synth.rpt -pb DeclockedTop_utilization_synth.pb"
 file delete __synthesis_is_running__
 close [open __synthesis_is_complete__ w]

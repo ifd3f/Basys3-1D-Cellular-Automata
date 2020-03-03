@@ -1,16 +1,16 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
--------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.2 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
-| Date             : Tue Mar  3 09:34:29 2020
+| Date             : Tue Mar  3 09:55:01 2020
 | Host             : BANANA running 64-bit Ubuntu 18.04.4 LTS
-| Command          : report_power -file Top_power_routed.rpt -pb Top_power_summary_routed.pb -rpx Top_power_routed.rpx
-| Design           : Top
+| Command          : report_power -file DeclockedTop_power_routed.rpt -pb DeclockedTop_power_summary_routed.pb -rpx DeclockedTop_power_routed.rpx
+| Design           : DeclockedTop
 | Device           : xc7a35tcpg236-1
 | Design State     : routed
 | Grade            : commercial
 | Process          : typical
 | Characterization : Production
--------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Power Report
 
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+----------------------------------+
-| Total On-Chip Power (W)  | 74.313 (Junction temp exceeded!) |
+| Total On-Chip Power (W)  | 74.280 (Junction temp exceeded!) |
 | Design Power Budget (W)  | Unspecified*                     |
 | Power Budget Margin (W)  | NA                               |
-| Dynamic (W)              | 73.827                           |
+| Dynamic (W)              | 73.794                           |
 | Device Static (W)        | 0.486                            |
 | Effective TJA (C/W)      | 5.0                              |
 | Max Ambient (C)          | 0.0                              |
@@ -52,17 +52,17 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Slice Logic    |     1.068 |      420 |       --- |             --- |
-|   LUT as Logic |     0.911 |      165 |     20800 |            0.79 |
-|   Register     |     0.091 |      181 |     41600 |            0.44 |
+| Slice Logic    |     1.010 |      405 |       --- |             --- |
+|   LUT as Logic |     0.853 |      155 |     20800 |            0.75 |
+|   Register     |     0.091 |      176 |     41600 |            0.42 |
 |   CARRY4       |     0.040 |       16 |      8150 |            0.20 |
 |   F7/F8 Muxes  |     0.021 |       14 |     32600 |            0.04 |
 |   BUFG         |     0.006 |        3 |        32 |            9.38 |
 |   Others       |     0.000 |       23 |       --- |             --- |
-| Signals        |     1.501 |      335 |       --- |             --- |
-| I/O            |    71.258 |       50 |       106 |           47.17 |
+| Signals        |     1.459 |      326 |       --- |             --- |
+| I/O            |    71.325 |       50 |       106 |           47.17 |
 | Static Power   |     0.486 |          |           |                 |
-| Total          |    74.313 |          |           |                 |
+| Total          |    74.280 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -72,9 +72,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     2.978 |       2.637 |      0.341 |
-| Vccaux    |       1.800 |     2.662 |       2.609 |      0.053 |
-| Vcco33    |       3.300 |    20.151 |      20.150 |      0.001 |
+| Vccint    |       1.000 |     2.878 |       2.537 |      0.341 |
+| Vccaux    |       1.800 |     2.665 |       2.611 |      0.053 |
+| Vcco33    |       3.300 |    20.170 |      20.169 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
@@ -136,21 +136,22 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+------------+-----------+
-| Name       | Power (W) |
-+------------+-----------+
-| Top        |    73.827 |
-|   db_dec   |     0.108 |
-|   db_dnx   |     0.107 |
-|   db_dpr   |     0.103 |
-|   db_inc   |     0.120 |
-|   db_reset |     0.125 |
-|   div_sim  |     0.133 |
-|   drv      |     0.284 |
-|     div    |     0.129 |
-|   main_div |     0.187 |
-|   sel_rule |     0.648 |
-|   sim      |     0.691 |
-+------------+-----------+
++--------------+-----------+
+| Name         | Power (W) |
++--------------+-----------+
+| DeclockedTop |    73.794 |
+|   main_div   |     0.183 |
+|   top        |     2.222 |
+|     db_dec   |     0.096 |
+|     db_dnx   |     0.083 |
+|     db_dpr   |     0.096 |
+|     db_inc   |     0.096 |
+|     db_reset |     0.099 |
+|     div_sim  |     0.134 |
+|     drv      |     0.301 |
+|       div    |     0.127 |
+|     sel_rule |     0.653 |
+|     sim      |     0.663 |
++--------------+-----------+
 
 

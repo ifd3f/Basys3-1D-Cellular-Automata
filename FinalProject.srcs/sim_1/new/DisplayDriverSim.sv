@@ -25,12 +25,12 @@ module DisplayDriverSim(
     );
     
     logic [7:0] rule;
-    logic clk, digit;
-    logic [7:0] seg;
+    logic clk, digit, dp;
+    logic [6:0] seg;
     logic [3:0] an;
 
     
-    DisplayDriver drv(.*);
+    DisplayDriver #(.DIV_DIG_N(4)) drv(.*);
     
     always begin
         clk = 1;

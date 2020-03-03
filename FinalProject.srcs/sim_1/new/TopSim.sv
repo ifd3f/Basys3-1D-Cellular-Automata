@@ -29,7 +29,7 @@ module TopSim(
     logic [6:0] seg;
     logic [3:0] an;
     
-    Top d(.*);
+    Top topmod(.*);
     
     always begin
         clk = 1;
