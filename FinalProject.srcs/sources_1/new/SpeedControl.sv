@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 02/25/2020 09:47:54 AM
+// Create Date: 03/02/2020 12:34:27 AM
 // Design Name: 
-// Module Name: ClockDivider
+// Module Name: SpeedControl
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,19 +20,18 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module ClockDivider#(parameter WIDTH=8)(
-    input clkin,
-    input [WIDTH-1:0] n,
-    output clkout
+module SpeedControl(
+    input inc,
+    input dec,
+    input en,
+    output reg [15:0] div
     );
-    
-    reg [WIDTH-1:0] state = 0;
-    
-    assign clkout = state == 0;
-    
-    always_ff @(posedge clkin) begin
-        state <= state + 1;
-        if (state == n)
-            state <= '0;
+    always_ff @(posedge inc, dec) begin
+        if (en) begin
+            if (inc)
+                div = div - 100;
+            if (dec)
+                div = div + 100;
+        end
     end
 endmodule

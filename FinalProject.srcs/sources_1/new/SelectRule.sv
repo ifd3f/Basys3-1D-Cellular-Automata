@@ -1,25 +1,19 @@
 module SelectRule(
     input clk, inc, dec, dig_next, dig_prev,
-    output reg [7:0] rule = 0,
-    output reg digit = 0
+    output [7:0] rule,
+    output [15:0] div,
+    output reg [1:0] digit = 0
     );
-    
-    logic [7:0] delta;
-    
-    assign delta = digit ? 8'd16 : 8'd1;
-    
-    always_ff @(posedge inc, posedge dec) begin
-        if (inc)
-            rule <= rule + delta;
-        if (dec)
-            rule <= rule - delta;
-    end
-    
+        
+    NumControl lr(.inc(inc), .dec(dec), .en(digit == 0), .num(rule[3:0]));
+    NumControl ur(.inc(inc), .dec(dec), .en(digit == 1), .num(rule[7:4]));
+    SpeedControl sc(.inc(inc), .dec(dec), .en(digit == 2), .div(div));
+
     always_ff @(posedge dig_next, posedge dig_prev) begin
         if (dig_next)
-            digit <= !digit;
+            digit <= digit + 1;
         if (dig_prev)
-            digit <= !digit;
+            digit <= digit - 1;
     end
     
 endmodule
