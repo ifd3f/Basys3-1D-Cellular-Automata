@@ -1,4 +1,4 @@
-`timescale 1ms / 1us
+`timescale 100us / 100us
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -33,9 +33,9 @@ module TopSim(
     
     always begin
         clk = 1;
-        #1;
+        #5;
         clk = 0;
-        #1;
+        #5;
     end
     
     initial begin
@@ -46,36 +46,68 @@ module TopSim(
         reset = 0;
         sw = 16'b00000010011;
         
-        #100;
+        // Move to MSD rule
+        #1000;
         dig_next = 1;
-        #200;
+        #2000;
         dig_next = 0;
-        #500;
+        #5000;
         
-        for (int i = 0; i < 7; i++) begin
+        // Increment (10)
+        for (int i = 0; i < 1; i++) begin
             inc = 1;
-            #200;
+            #2000;
             inc = 0;
-            #300;
+            #3000;
         end
+        #1000;
         
-        #100;
+        // Move to LSD rule
         dig_prev = 1;
-        #200;
+        #2000;
         dig_prev = 0;
-        #500;
+        #5000;
         
-        for (int i = 0; i < 2; i++) begin
+        // Decrement (16)
+        for (int i = 0; i < 10; i++) begin
             dec = 1;
-            #200;
+            #2000;
             dec = 0;
-            #300;
+            #3000;
+        end
+        #5000;
+        
+        // Begin simulating
+        reset = 1;
+        #1000;
+        reset = 0;
+        #50000
+        
+        // Move to speed        
+        for (int i = 0; i < 2; i++) begin
+            dig_next = 1;
+            #2000;
+            dig_next = 0;
+            #3000;
+        end
+        #5000;
+        
+        // Make it go faster
+        for (int i = 0; i < 10; i++) begin
+            inc = 1;
+            #2000;
+            inc = 0;
+            #48000;
         end
         
-        #500;
-        reset = 1;
-        #100;
-        reset = 0;
-
+        #50000;
+        
+        // Make it go slower
+        for (int i = 0; i < 20; i++) begin
+            dec = 1;
+            #2000;
+            dec = 0;
+            #48000;
+        end
     end
 endmodule
