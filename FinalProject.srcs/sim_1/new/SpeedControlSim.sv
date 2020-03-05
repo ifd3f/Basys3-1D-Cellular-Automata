@@ -58,7 +58,7 @@ module SpeedControlSim(
         
         #10000;
         
-        for (int i = 0; i < 50; i++) begin
+        for (int i = 0; i < 20; i++) begin
             dec = 1;
             #5;
             dec = 0;
