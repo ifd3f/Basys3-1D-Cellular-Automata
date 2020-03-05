@@ -35,6 +35,6 @@ module DeclockedTop(
     );
     
     logic clk;
-    ClockDivider #(.WIDTH(32)) main_div(.n(32'd100000), .clkin(clk_sys), .clkout(clk));
+    ClockDivider #(.WIDTH(32)) main_div(.n(32'd50000), .clkin(clk_sys), .clkout(clk));
     Top top(.*);
 endmodule

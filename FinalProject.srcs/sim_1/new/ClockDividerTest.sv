@@ -26,7 +26,7 @@ module ClockDividerTest(
     
     logic clkin, clkout;
     
-    ClockDivider #(.N(3)) div(.*);
+    ClockDivider div(.n(3), .*);
     
     always begin
         clkin = 1;

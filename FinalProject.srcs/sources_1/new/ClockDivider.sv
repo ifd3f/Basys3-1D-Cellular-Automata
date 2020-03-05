@@ -27,12 +27,15 @@ module ClockDivider#(parameter WIDTH=8)(
     );
     
     reg [WIDTH-1:0] state = 0;
+    reg toggle = 0;
     
-    assign clkout = state == 0;
+    assign clkout = toggle;
     
     always_ff @(posedge clkin) begin
-        state <= state + 1;
-        if (state >= n)
-            state <= '0;
+        if (state >= n) begin
+            state <= 0;
+            toggle = ~toggle;
+        end else
+            state <= state + 1;
     end
 endmodule

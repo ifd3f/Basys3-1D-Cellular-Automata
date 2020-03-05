@@ -38,15 +38,13 @@ module SpeedControl (
     reg [15:0] s0 = 889;
     // First-order difference
     reg [15:0] s1 = -90;
-    
     // Second-order difference
     reg [15:0] s2 = 13;
-    
     // Third-order difference (constant)
     logic [15:0] s3 = -6;
 
     // The clock divider, finally
-    ClockDivider #(.WIDTH(16)) div(.clkin(clk), .n(s0), .clkout(clkout));
+    ClockDivider #(.WIDTH(15)) div(.clkin(clk), .n(s0[15:1]), .clkout(clkout));
     
     // On inc or dec, these will be the resulting values of t, s1, and s2. 
     logic [15:0] ds0, ds1, ds2, is0, is1, is2;
