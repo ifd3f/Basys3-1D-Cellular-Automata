@@ -24,12 +24,13 @@ module SpeedDisplay(
     input clk, 
     output logic [6:0] seg
     );
-    reg [2:0] state;
+    reg [2:0] state = 0;
     
     always_ff @(posedge clk) begin
-        state <= state + 1;
-        if (state == 6)
-            state = 0;
+        if (state == 5)
+            state <= 0;
+        else
+            state <= state + 1;
     end
     
     always_comb begin
@@ -39,7 +40,7 @@ module SpeedDisplay(
             2: seg = 7'b1111011;
             3: seg = 7'b1110111;
             4: seg = 7'b1101111;
-            5: seg = 7'b1011111;
+            default: seg = 7'b1011111;
         endcase
     end
 endmodule

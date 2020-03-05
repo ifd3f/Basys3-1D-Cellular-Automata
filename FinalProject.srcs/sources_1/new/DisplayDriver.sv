@@ -33,5 +33,5 @@ module DisplayDriver(
     Seg7 ur(.num(rule[7:4]));
     Seg7 lr(.num(rule[3:0]));
     
-    SegMux mux(.seg_in({7'b0, spd.seg, ur.seg, lr.seg}), .clk(clk), .digit(digit), .seg(seg), .an(an), .dp(dp));
+    SegMux mux(.seg_in({7'b1111111, spd.seg, ur.seg, lr.seg}), .clk(clk), .digit(digit), .seg(seg), .an(an), .dp(dp));
 endmodule

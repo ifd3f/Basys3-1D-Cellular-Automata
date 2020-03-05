@@ -46,7 +46,7 @@ module Top(
     
     SelectRule sel_rule(.clk(clk), .enter(db_reset.q), .inc(db_inc.q), .dec(db_dec.q), .dig_next(db_dnx.q), .dig_prev(db_dpr.q), .digit(digit), .active_rule(active_rule), .rule(rule));
     
-    ClockDivider #(.WIDTH(16), .N(500)) div_sim(.clkin(clk), .clkout(clk_sim));    
+    ClockDivider #(.WIDTH(16)) div_sim(.clkin(clk), .n(16'd500), .clkout(clk_sim));    
     Simulator #(.WIDTH(16)) sim(.clk(clk_sim), .rule(active_rule), .si(sw), .reset(db_reset.q), .so(led));
     DisplayDriver drv(.rule(rule), .digit(digit), .clk(clk), .seg(seg), .dp(dp), .an(an));
 endmodule

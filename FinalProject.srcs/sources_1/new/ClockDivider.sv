@@ -32,7 +32,7 @@ module ClockDivider#(parameter WIDTH=8)(
     
     always_ff @(posedge clkin) begin
         state <= state + 1;
-        if (state == n)
+        if (state >= n)
             state <= '0;
     end
 endmodule

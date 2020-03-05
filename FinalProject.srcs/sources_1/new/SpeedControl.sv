@@ -20,18 +20,37 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module SpeedControl(
+module SpeedControl #(parameter T_WIDTH=12, DEFAULT_T = 550, STEP = 50, MAX = 2000, MIN = 250) (
+    input clk,
     input inc,
     input dec,
     input en,
-    output reg [15:0] div
+    output clkout 
     );
-    always_ff @(posedge inc, dec) begin
+    
+    reg [T_WIDTH-1:0] t = DEFAULT_T;
+    ClockDivider #(.WIDTH(T_WIDTH)) div(.clkin(clk), .n(t), .clkout(clkout));
+    
+    logic [T_WIDTH-1:0] next_inc, next_dec;
+    assign next_inc = t - STEP;
+    assign next_dec = t + STEP;
+    
+    always_ff @(posedge clk) begin
         if (en) begin
+            // inc and dec look like they're in reverse, but inc means to increase speed (decrease period) and 
+            // dec means to decrease speed (increase period)
+            
             if (inc)
-                div = div - 100;
+                if (next_inc < MIN | next_inc > t)
+                    t <= MIN;
+                else
+                    t <= next_inc;
+                
             if (dec)
-                div = div + 100;
+                if (next_dec > MAX | next_dec < t)
+                    t <= MAX;
+                else
+                    t <= next_dec;
         end
     end
 endmodule

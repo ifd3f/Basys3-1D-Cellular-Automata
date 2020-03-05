@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module SegMux #(parameter DIV_DIG_WIDTH=16, DIV_DIG_N=16'd2000)(
+module SegMux #(parameter DIV_DIG_WIDTH=16, DIV_DIG_N=16'd500)(
     input [27:0] seg_in,
     input clk,
     input [1:0] digit,
@@ -29,18 +29,22 @@ module SegMux #(parameter DIV_DIG_WIDTH=16, DIV_DIG_N=16'd2000)(
     output dp
     );
     
-    logic clk_dp;
-    reg [1:0] state = 0;
-    ClockDivider #(.WIDTH(DIV_DIG_WIDTH)) div(.clkin(clk), .n(DIV_DIG_N), .clkout(clk_dp));
+    reg [1:0] drv = 0;
+    reg [1:0] dp_sig = 0;
+    ClockDivider #(.WIDTH(DIV_DIG_WIDTH)) div(.clkin(clk), .n(DIV_DIG_N));
+    
+    always_ff@(posedge div.clkout) begin
+        dp_sig = ~dp_sig;
+    end
 
     always_ff@(posedge clk) begin
-        state = state + 1;
+        drv <= drv + 1;
     end
     
-    assign dp = ~(clk_dp & (digit == state));
+    assign dp = ~(dp_sig & (digit == drv));
     
     always_comb begin
-        case (state)
+        case (drv)
             2'd0: begin
                 seg = seg_in[6:0];
                 an = 4'b1110;
