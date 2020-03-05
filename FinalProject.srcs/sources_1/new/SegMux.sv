@@ -1,25 +1,3 @@
-`timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 03/02/2020 12:23:30 AM
-// Design Name: 
-// Module Name: SegMux
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
-
 module SegMux #(parameter DIV_DIG_WIDTH=16, DIV_DIG_N=16'd250)(
     input [27:0] seg_in,
     input clk,
